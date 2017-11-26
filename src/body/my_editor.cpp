@@ -19,7 +19,7 @@ using namespace std;
 int main (void) {
 
   buffer buf("buffer");
-  cout << "Hello C++!" << endl;
+  cout << "Hello C++!!" << endl;
 
   buf.add_line("hoge");
   cout << buf.get_line_index_of(0);
