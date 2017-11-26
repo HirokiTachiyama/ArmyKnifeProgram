@@ -56,6 +56,7 @@ obj: $(OBJECTS)
 	@[ -d $(O)]
 	$(COMPILER) $(OBJECT_OPTION)
 
+
 #$(OBJ_DIR)/%.o: %.cpp
 #	@[ -d $(OBJ_DIR) ]
 #	$(CXX) $(OPTIONS) -o $@ -c $<
