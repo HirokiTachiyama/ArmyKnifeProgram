@@ -1,7 +1,7 @@
 require "curses"
 
 require_relative 'memo'
-# require_relative 'twitter'
+require_relative 'twitter'
 require_relative 'util'
 
 include Curses
@@ -13,7 +13,7 @@ class AKP
     f = open file_name
     f.each do |l|
       k, v = l.split '='
-      config[k] = v
+      config[k] = v.chomp
     end
     f.close
   end
@@ -44,8 +44,8 @@ class AKP
       
       case input
       when "twitter"
-  #     new Twitter.main
-        puts "Not implemented yet!"
+		client = MyTwitter.new config
+		client.main_loop
       when "memo"
         Memo.new.main_loop config
       when "help", "h"
