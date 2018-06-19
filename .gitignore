@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+
+# local
+src/.akp.conf
