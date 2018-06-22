@@ -6,8 +6,7 @@ lines = 40
 cols  = 40
 
 begin
-
-	crmode
+	crmodei # ctrl input mode
 
 	setpos((lines - 5) / 2, (cols - 10) / 2)
 	addstr("Hit any key")
