@@ -8,9 +8,9 @@ class MyTwitter
 		ssl_file_path = config_hash['akp_root'] + config_hash['ssl_file_name']
 		ENV["SSL_CERT_FILE"] = ssl_file_path
 		@client = Twitter::REST::Client.new do |config|
-			config.consumer_key			= config_hash['consumer_key']
-			config.consumer_secret		= config_hash['consumer_secret']
-			config.access_token			= config_hash['access_token']
+			config.consumer_key					= config_hash['consumer_key']
+			config.consumer_secret			= config_hash['consumer_secret']
+			config.access_token					= config_hash['access_token']
 			config.access_token_secret	= config_hash['access_token_secret']
 		end
 	end
@@ -27,11 +27,11 @@ class MyTwitter
 				print "########## Str? : "
 				str = gets.chomp
 				@client.update(str)
-			when "timeline"
+			when "tl"
 				@client.home_timeline({count: 5}).each do |tweet|
+					puts tweet.user.name
 					puts tweet.full_text
-					puts "Favorite: #{tweet.favorite_count}"
-					puts "Retweet : #{tweet.retweet_count}"
+					puts "Favorite: #{tweet.favorite_count}" ", Retweet : #{tweet.retweet_count}"
 				end
 			when "help", "h"
 				show_help
@@ -44,7 +44,7 @@ class MyTwitter
 	end
 
 	def show_help
-		puts "send", "timeline", "help", "h", "quit"
+		puts "send", "tl", "help", "h", "quit"
 	end	
 
 
@@ -58,9 +58,6 @@ class MyTwitter
 	def send_tweet(str)
 		@client.update(str)
 	end
-
-
-		
 
 end
 

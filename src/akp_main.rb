@@ -2,7 +2,7 @@
 
 require_relative 'akp'
 
-config_file_path = "~/Workspace/akp/src/.akp.conf"
+config_file_path = "~/.akp.conf"
 
 akp = AKP.new
 akp.main config_file_path
