@@ -1,7 +1,6 @@
 require "twitter"
 # include Constants
 
-
 class MyTwitter
 
 	def initialize(config_hash)
@@ -46,7 +45,6 @@ class MyTwitter
 	def show_help
 		puts "send", "tl", "help", "h", "quit"
 	end	
-
 
 	def show_my_profile
 		puts @client.user.screen_name
