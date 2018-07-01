@@ -3,23 +3,25 @@ require "color_echo/get"
 
 module AKP_color_echo
 
-  def colored_print_by_country area
-	case area.country
-	when "free" # nobody occupates
-	  print area.dice.to_s+" " # default console fg, ex. white
+  def colored_print_by_country_color(country, str)
+	# print "###",country, "###"
+	case country
+	when "free" # nobody occupy
+	  print str # default console fg, ex. white
 	when "player" # black
-	  colored_print area.dice.to_s+" ", "index234"
+	  colored_print str, "index234"
 	  return
 	when "cpu1"   # blue
-	  colored_print area.dice.to_s+" ", "blue"
+	  colored_print str, "blue"
 	  return
 	when "cpu2"   # red
-	  colored_print area.dice.to_s+" ", "index2"
+	  colored_print str, "index197"
 	  return
 	when "cpu3"   # orange
-	  colored_print area.dice.to_s+" ", "index167"
+	  colored_print str, "index167"
 	  return
 	else
+	  print "fuga!"
 	  return
 	end
 

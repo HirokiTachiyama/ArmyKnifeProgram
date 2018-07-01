@@ -12,9 +12,10 @@ class DiceStrategy
 
 #		@map = Array.new(4, (Array.new 5, # size: 4*5
 #					(Area.new "c0",0)))
-		show_map
+		# show_map
 	  	generate_game_map
 	end
+
   def generate_game_map
 	update_area @map[0][0], "player", 3
 	update_area @map[0][1], "player", 3
@@ -40,10 +41,45 @@ class DiceStrategy
 	end
 
 	def start
-		show_map
-
 		r = Random.new
-		puts r.rand(1..6)
+		# puts r.rand(1..6)
+	  	main_loop
+	end
+
+
+	def main_loop
+		input = nil
+		gc = GameController.new
+		while there_are_some_countries? # till decide WIN country
+			current_player = gc.next
+			print "\nTurn of ",
+				  current_player,
+				  "(press any key)"
+			STDIN.getc
+			loop do
+				show_map
+				colored_print_by_country_color current_player, "Command(x,y->x,y)? : "
+				input = gets.chomp
+			  	case input
+				when 'q'
+					break
+				else
+					do_command input
+					next
+				end
+			end
+		end
+	end
+
+	def do_command(input)
+		coordinates = input.split("->")
+	  	from, to = Hash.new
+	  	print from, to
+
+	end
+
+	def there_are_some_countries?
+		true
 	end
 
 	def show_map
@@ -53,11 +89,29 @@ class DiceStrategy
 			index_s = i.to_s + " "
 			colored_print index_s, "index119"
 			line.each do |area|
-				colored_print_by_country area
+				colored_print_by_country_color area.country, area.dice.to_s+" "
 			end
-		  puts
+		puts
 		end
 	end
+
+	class GameController
+		def initialize
+		  @turn_order           = %w(player cpu1 cpu2 cpu3)
+		  @current_player_index = 0
+		  @current_player       = @turn_order[0]
+		end
+
+	  def next
+		@current_player_index = @current_player_index + 1
+		if(@current_player_index == @turn_order.size) then
+		  @current_player_index = 0
+		end
+		@current_player = @turn_order[@current_player_index]
+		return @current_player
+	  end
+	end
+
 
   class Area
 	attr_accessor :country, :dice
@@ -65,7 +119,6 @@ class DiceStrategy
 	  @country=country
 	  @dice=dice
 	end
-
   end
 end
 
