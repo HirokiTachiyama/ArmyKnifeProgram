@@ -6,62 +6,60 @@ include AKP_color_echo
 class DiceStrategy
 
 	def initialize
-	  @map = Array.new(5).map{Array.new(6).map{
-		Area.new "free", 0
-	  }}
+		@map = Array.new(5).map.with_index do |_, x|
+			Array.new(6).map.with_index do |_, y| # 5*6
+				Area.new "free", 0, x, y
+			end
+		end
+		# puts @map
+		# @map.each { |line| puts line}
 
-#		@map = Array.new(4, (Array.new 5, # size: 4*5
-#					(Area.new "c0",0)))
-		# show_map
-	  	generate_game_map
+		generate_game_map
 	end
 
-  def generate_game_map
-	update_area @map[0][0], "player", 3
-	update_area @map[0][1], "player", 3
-	update_area @map[1][0], "player", 3
+	def generate_game_map
+		update_area @map[0][0], "player", 3
+		update_area @map[0][1], "player", 3
+		update_area @map[1][0], "player", 3
 
-	update_area @map[0][4], "cpu1", 3
-	update_area @map[0][5], "cpu1", 3
-	update_area @map[1][5], "cpu1", 3
+		update_area @map[0][4], "cpu1", 3
+		update_area @map[0][5], "cpu1", 3
+		update_area @map[1][5], "cpu1", 3
 
-	update_area @map[3][0], "cpu2", 3
-	update_area @map[4][0], "cpu2", 3
-	update_area @map[4][1], "cpu2", 3
+		update_area @map[3][0], "cpu2", 3
+		update_area @map[4][0], "cpu2", 3
+		update_area @map[4][1], "cpu2", 3
 
-
-	update_area @map[3][5], "cpu3", 3
-	update_area @map[4][4], "cpu3", 3
-	update_area @map[4][5], "cpu3", 3
-  end
+		update_area @map[3][5], "cpu3", 3
+		update_area @map[4][4], "cpu3", 3
+		update_area @map[4][5], "cpu3", 3
+	end
 
 	def update_area area, country, dice
-	  	area.country = country
-	  	area.dice = dice
+		area.country = country
+		area.dice = dice
 	end
 
 	def start
 		r = Random.new
 		# puts r.rand(1..6)
-	  	main_loop
+		main_loop
 	end
 
 
 	def main_loop
-		input = nil
 		gc = GameController.new
 		while there_are_some_countries? # till decide WIN country
 			current_player = gc.next
 			print "\nTurn of ",
-				  current_player,
-				  "(press any key)"
+				current_player,
+				"(press any key)"
 			STDIN.getc
 			loop do
 				show_map
 				colored_print_by_country_color current_player, "Command(x,y->x,y)? : "
-				input = gets.chomp
-			  	case input
-				when 'q'
+			  	case input = gets.chomp
+				when 'q', "quit"
 					break
 				else
 					do_command input
@@ -72,9 +70,18 @@ class DiceStrategy
 	end
 
 	def do_command(input)
-		coordinates = input.split("->")
-	  	from, to = Hash.new
-	  	print from, to
+		from_tmp, to_tmp = input.split("->")
+
+		tmp = from_tmp.split(',')
+		from = {:x => tmp[0].to_i, :y => tmp[1].to_i}
+
+		tmp = to_tmp.split(',')
+		to = {:x => tmp[0].to_i, :y => tmp[1].to_i}
+
+
+		p @map[from[:x]][from[:y]]
+		p @map[to[:x]][to[:y]]
+
 
 	end
 
@@ -83,7 +90,7 @@ class DiceStrategy
 	end
 
 	def show_map
-		clear
+		# clear
 		colored_puts "  0 1 2 3 4 5", "index119"
 		@map.each_with_index do |line, i|
 			index_s = i.to_s + " "
@@ -115,9 +122,11 @@ class DiceStrategy
 
   class Area
 	attr_accessor :country, :dice
-	def initialize(country, dice)
-	  @country=country
-	  @dice=dice
+	def initialize(country, dice, x, y)
+	  @country = country
+	  @dice    = dice
+	  @x       = x
+	  @y       = y
 	end
   end
 end
