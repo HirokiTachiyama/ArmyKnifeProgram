@@ -1,5 +1,5 @@
 require 'curses'
-require 'color_echo'
+require 'AKP_color_echo'
 
 require_relative 'memo'
 require_relative 'twitter'
@@ -18,10 +18,6 @@ class AKP
 	end
 
 	def main(config_file_path)
-		CE.fg(:cyan)
-		CE.bg(:gray)
-		CE.tx(:bold,:underline)
-
 		if config_file_path.include? "~" then
 			config_file_path.gsub! "~", ENV['HOME']
 		end
