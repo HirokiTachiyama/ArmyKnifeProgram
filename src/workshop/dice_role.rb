@@ -2,17 +2,19 @@ require 'curses'
 require 'color_echo/get'
 
 mwin = Curses.init_screen
+Curses.start_color
 mwin.box(?|, ?-, ?+)
 
 begin
 	r = Random.new
-	
 	mwin_str  = "Main Window"
+	mwin_str = CE.once.fg(:blue).get(r.rand(1..6).to_s)
+	mwin_str =  "\e[4" + "c" + ";1m "
 	swin1_str = "Sub Window 1"
 	swin2_str = "Sub Window 2"
 
 	Curses.setpos(Curses.lines / 2, Curses.cols / 2 - (mwin_str.length / 2))
-	# Curses.addstr(mwin_str)
+	Curses.addstr(mwin_str)
 
 	swin1 = mwin.subwin(3, Curses.cols, 0, 0)
 	swin1.box(?|, ?-, ?+)
@@ -26,12 +28,12 @@ begin
 	# swin2.addstr(swin2_str)
 	swin2.refresh
 
-	# Curses.refresh
-	# Curses.getch
-	loop do 
-		mwin_str = t CE.once.fg(:yellow).get(str)
-		mwin_str = CE.fg(:yellow).r.rand(1..6).to_s+" "
-+r.rand(1..6).to_s+" "+r.rand(1..6).to_s
+	 Curses.refresh
+	 Curses.getch
+	loop do
+
+	  mwin_str = CE.once.fg(:blue).get(r.rand(1..6).to_s)
+# +r.rand(1..6).to_s+" "+r.rand(1..6).to_s
 		Curses.setpos(Curses.lines / 2, Curses.cols / 2 - (mwin_str.length / 2))
 		# Curses.delch
 		Curses.addstr(mwin_str)
