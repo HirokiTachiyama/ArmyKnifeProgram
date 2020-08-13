@@ -1,7 +1,8 @@
-# Happy Hacking and Programming!
-# The Tools is the union of my creation in hobby time :)
+# The union of my hobby creation.
 
-* Pizza-Party - online pizza ordering utility on command-line
+* Pomodoro - a timer of pomodoro technique
+* Dice - dice strategy game
 * YouTube-Now - useful YouTube window 
-* Text Editor - I want to develop original, and cool one!
+* Text Editor - pending
+* Pizza-Party - online pizza ordering utility on command-line
 * and more...
