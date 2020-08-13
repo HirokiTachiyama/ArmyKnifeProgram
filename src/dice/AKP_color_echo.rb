@@ -31,8 +31,6 @@ module AKP_color_echo
 		print CE.once.fg(color.to_sym).get(str)
 	end
 
-
-
 	def colored_puts(str, color)
 		puts CE.once.fg(color.to_sym).get(str)
 	end
