@@ -17,8 +17,8 @@ end
 
 $itimer = nil # タイマー
 
-$work_minutes  = 25 # 作業時間
-$break_minutes = 5  # 休憩時間
+$work_minutes  = 45 # 作業時間
+$break_minutes = 10  # 休憩時間
 
 $work_times  = 0 # 作業した回数
 $break_times = 0 # 休憩した回数

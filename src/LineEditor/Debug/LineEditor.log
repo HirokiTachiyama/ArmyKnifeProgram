@@ -1,0 +1,31 @@
+﻿  Buffer.c
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(45,31): warning C4047: '関数': 間接参照のレベルが 'rsize_t' と 'char [12]' で異なっています。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(45,18): warning C4024: 'strcpy_s': の型が 2 の仮引数および実引数と異なります。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(45,11): error C2198: 'strcpy_s': 呼び出しに対する引数が少なすぎます。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(47,36): warning C4047: '関数': 間接参照のレベルが 'rsize_t' と 'char [17]' で異なっています。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(47,18): warning C4024: 'strcpy_s': の型が 2 の仮引数および実引数と異なります。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(47,11): error C2198: 'strcpy_s': 呼び出しに対する引数が少なすぎます。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(49,36): warning C4047: '関数': 間接参照のレベルが 'rsize_t' と 'char [17]' で異なっています。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(49,18): warning C4024: 'strcpy_s': の型が 2 の仮引数および実引数と異なります。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(49,11): error C2198: 'strcpy_s': 呼び出しに対する引数が少なすぎます。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(51,30): warning C4047: '関数': 間接参照のレベルが 'rsize_t' と 'char [11]' で異なっています。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(51,18): warning C4024: 'strcpy_s': の型が 2 の仮引数および実引数と異なります。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(51,11): error C2198: 'strcpy_s': 呼び出しに対する引数が少なすぎます。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(53,29): warning C4047: '関数': 間接参照のレベルが 'rsize_t' と 'char [10]' で異なっています。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(53,18): warning C4024: 'strcpy_s': の型が 2 の仮引数および実引数と異なります。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(53,11): error C2198: 'strcpy_s': 呼び出しに対する引数が少なすぎます。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(55,29): warning C4047: '関数': 間接参照のレベルが 'rsize_t' と 'char [10]' で異なっています。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(55,18): warning C4024: 'strcpy_s': の型が 2 の仮引数および実引数と異なります。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(55,11): error C2198: 'strcpy_s': 呼び出しに対する引数が少なすぎます。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(57,32): warning C4047: '関数': 間接参照のレベルが 'rsize_t' と 'char [13]' で異なっています。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(57,18): warning C4024: 'strcpy_s': の型が 2 の仮引数および実引数と異なります。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(57,11): error C2198: 'strcpy_s': 呼び出しに対する引数が少なすぎます。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(59,29): warning C4047: '関数': 間接参照のレベルが 'rsize_t' と 'char [10]' で異なっています。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(59,18): warning C4024: 'strcpy_s': の型が 2 の仮引数および実引数と異なります。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(59,11): error C2198: 'strcpy_s': 呼び出しに対する引数が少なすぎます。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(61,30): warning C4047: '関数': 間接参照のレベルが 'rsize_t' と 'char [11]' で異なっています。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(61,18): warning C4024: 'strcpy_s': の型が 2 の仮引数および実引数と異なります。
+C:\workspace\code\armyknife\src\LineEditor\old\Buffer.c(61,11): error C2198: 'strcpy_s': 呼び出しに対する引数が少なすぎます。
+  LE.c
+  LinkList.c
+  コードを生成中...

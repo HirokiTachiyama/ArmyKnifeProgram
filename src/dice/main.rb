@@ -41,14 +41,15 @@ class GameMap
     puts "@body"
     @height.times do |w|
       @width.times do |h|
-        print @body[w][h], " "
+        # print @body[w][h], " "
+        print "%3d" % @body[w][h], " " # 3Œ…‘µ‚¦
       end
-      puts ""
+      puts
     end
   end
 end
 
-map = GameMap.new(2, 3)
+map = GameMap.new(6, 6)
 
 dice = Dice.new
 p dice.roll

@@ -1,0 +1,2 @@
+C:\workspace\code\armyknife\src\LineEditor\Debug\LineEditor.exe
+C:\workspace\code\armyknife\src\LineEditor\Debug\LineEditor.pdb
