@@ -11,7 +11,6 @@
 
   ; FONT-LOCK-LIST 色分け対象を正規表現で指定して、faceを割当てる
   ; 「or」は、Emacsの正規表現だと 「\\| 」
-  
   `(
     ; obj, 間接参照
     ; 2桁以上だとまだうまく色がつかない
@@ -42,5 +41,7 @@
   nil
 
   ; pdf-modeの説明
-  "Major mode for PDF writing")
+  "Major mode for kifu file; CSA-style")
+
+
 
