@@ -2,7 +2,6 @@
 
 require 'io/console'
 
-
 $goban = {}
 $kifu  = {}
 $yoko = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九"]
@@ -12,6 +11,8 @@ $teban = ""
 $before_tate, $before_yoko = 0, ""
 $after_tate, $after_yoko   = 0, ""
 $koma = ""
+$komadai_sente = {"FU"=>0, "KY"=>0, "KE"=>0, "GI"=>0, "KI"=>0, "KA"=>0, "HI"=>}
+$komadai_gote  = {"FU"=>0, "KY"=>0, "KE"=>0, "GI"=>1, "KI"=>0, "KA"=>0, "HI"=>0}
 
 def prepare_goban
   $goban[1] = { "一"=>"-KY", "二"=>" * ", "三"=>"-FU", "四"=>" * ",
@@ -58,35 +59,22 @@ def info
   clear_console()
 
   print $event+"\n戦形:"+$opening+"\n"
-  print "後手: " + $gote + "\n"
-  
+  print "後手: " + $gote + " "
+
+  str = ""
+  $komadai_gote.each do |k, v|
+    if v != 0
+      str = str + k.to_s + " "
+    end
+  end
+  if str.eql?("") then puts "なし"
+  else puts str end
+    
   show_goban()
   
   print "\n" + "先手: " + $sente + "\n"
   print "#{$te}手目 " + $after_tate.to_s + $after_yoko + $koma + "\n"
 end
-
-File.open("kifu.csa") do |f|
-  f.gets # throw aray Version
-  $sente = f.gets.delete("N+")
-  $gote  = f.gets.delete("N-")
-  $event = f.gets#.delete("$EVENT:")
-  $site  = f.gets.delete("$SITE:")
-  $start_time = f.gets.delete("$START_TIME:")
-  $opening = f.gets.delete("$OPENING:")
-
-  while( !f.gets.include?("+\n") )  # throw away P1~P9
-  end
-
-  tmp = ""
-  f.each_line { |l| tmp = tmp + l }
-  i=1
-  tmp.each_line do |sashite|
-    $kifu[i] = sashite.chomp
-    i = i + 1
-  end
-end
-
 
 def update
   $te = $te + 1
@@ -103,17 +91,39 @@ def update
   $goban[$after_tate][$after_yoko] = $teban + $koma
 end
 
+File.open("kifu.csa") do |f|
+  f.gets # throw aray Version
+  $sente = f.gets.delete("N+").chomp
+  $gote  = f.gets.delete("N-").chomp
+  $event = f.gets.delete("$EVENT:").chomp
+  $site  = f.gets.delete("$SITE:").chomp
+  $start_time = f.gets.delete("$START_TIME:").chomp
+  $opening = f.gets.delete("$OPENING:").chomp
+
+  while( !f.gets.include?("+\n") )  # throw away P1~P9
+  end
+
+  tmp = ""
+  f.each_line { |l| tmp = tmp + l }
+  i=1
+  tmp.each_line do |sashite|
+    $kifu[i] = sashite.chomp
+    i = i + 1
+  end
+end
+
 prepare_goban()
 show_kifu()
 info()
 loop do
   print "command? ((n)ext/(q)uit) : "
   cmd = STDIN.getch
-  if cmd.eql? "k" then
+  if cmd.eql? "k"
     show_kifu()
   elsif cmd.eql? "n"
     update()
     info()
+    puts $kifu[$te]
   elsif cmd.eql? "q"
     break
   end
