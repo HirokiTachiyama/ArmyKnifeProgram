@@ -2,6 +2,21 @@
 
 require 'io/console'
 
+module Koma
+  FU="歩"
+  KY="香"
+  NY="杏"
+  KE="桂"
+  GI="銀"
+  NG="全"
+  KI="金"
+  KA="角"
+  UM="馬"
+  HI="飛"
+  RY="龍"
+  OU="玉"
+end
+
 $goban = {}
 $kifu  = {}
 $yoko = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九"]
@@ -11,8 +26,8 @@ $teban = ""
 $before_tate, $before_yoko = 0, ""
 $after_tate, $after_yoko   = 0, ""
 $koma = ""
-$komadai_sente = {"FU"=>0, "KY"=>0, "KE"=>0, "GI"=>0, "KI"=>0, "KA"=>0, "HI"=>}
-$komadai_gote  = {"FU"=>0, "KY"=>0, "KE"=>0, "GI"=>1, "KI"=>0, "KA"=>0, "HI"=>0}
+$komadai_sente = {"FU"=>0, "KY"=>0, "KE"=>0, "GI"=>0, "KI"=>0, "KA"=>0, "HI"=>0}
+$komadai_gote  = {"FU"=>0, "KY"=>0, "KE"=>0, "GI"=>0, "KI"=>0, "KA"=>0, "HI"=>0}
 
 def prepare_goban
   $goban[1] = { "一"=>"-KY", "二"=>" * ", "三"=>"-FU", "四"=>" * ",
@@ -130,3 +145,4 @@ loop do
 end
 
 
+puts KOMA::FU
