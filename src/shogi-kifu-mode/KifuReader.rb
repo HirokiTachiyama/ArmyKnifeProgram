@@ -29,6 +29,11 @@ $koma = ""
 $komadai_sente = {"FU"=>0, "KY"=>0, "KE"=>0, "GI"=>0, "KI"=>0, "KA"=>0, "HI"=>0}
 $komadai_gote  = {"FU"=>0, "KY"=>0, "KE"=>0, "GI"=>0, "KI"=>0, "KA"=>0, "HI"=>0}
 
+$koma_kanji = {
+  "FU"=>"歩", "KY"=>"香", "NY"=>"杏", "KE"=>"桂", "GI"=>"銀","NG"=>"全",
+  "KI"=>"金", "KA"=>"角", "UM"=>"馬", "HI"=>"飛", "RY"=>"龍","OU"=>"玉"
+}
+
 def prepare_goban
   $goban[1] = { "一"=>"-KY", "二"=>" * ", "三"=>"-FU", "四"=>" * ",
                 "五"=>" * ", "六"=>" * ", "七"=>"+FU", "八"=>" * ", "九"=>"+KY" }
@@ -88,7 +93,14 @@ def info
   show_goban()
   
   print "\n" + "先手: " + $sente + "\n"
-  print "#{$te}手目 " + $after_tate.to_s + $after_yoko + $koma + "\n"
+  print "#{$te}手目 " + $after_tate.to_s + $after_yoko + $koma
+
+  if ( $before_tate==0 and $before_yoko=="零" ) then # 打
+    print "打"
+  end
+
+  puts ""
+  
 end
 
 def update
@@ -97,13 +109,16 @@ def update
   # sashite.delete!("+").delete!("-") # throw "+", "-"
 
   $teban = sashite[0]
-
   $before_tate, $before_yoko = sashite[1].to_i, $yoko[sashite[2].to_i]
   $after_tate, $after_yoko   = sashite[3].to_i, $yoko[sashite[4].to_i]
-  $koma   = sashite[5] + sashite[6]
-
-  $goban[$before_tate][$before_yoko] = " * "
+  $koma = $koma_kanji[sashite[5] + sashite[6]]
+  
   $goban[$after_tate][$after_yoko] = $teban + $koma
+
+  if (  $before_tate !=0 and $before_yoko != 0 ) then  # 打じゃないとき
+    $goban[$before_tate][$before_yoko] = " * "
+  end
+
 end
 
 File.open("kifu.csa") do |f|
